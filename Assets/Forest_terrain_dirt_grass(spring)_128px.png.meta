@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Forest_terrain_dirt_grass(spring)_128px_0: -4539783690987968337
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

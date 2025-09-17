@@ -4,7 +4,7 @@ using UnityEngine.Rendering;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D myCharacterController;
-    public Animator myAnimator;
+    //public Animator myAnimator;
 
 
     public float speed = 30f;
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         myCharacterController = GetComponent<CharacterController2D>();
-        myAnimator = GetComponent<Animator>();
+        //myAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
 
-        myAnimator.SetFloat("speed", Mathf.Abs(horizontalMove));
+        //myAnimator.SetFloat("speed", Mathf.Abs(horizontalMove));
 
         //if()
 

@@ -74,7 +74,7 @@ public class TutorialNextScene : MonoBehaviour, Interactable
 
     public void Interact() { }
 
-    public void toggleE(bool activate) { }
+    public void toggle(bool activate) { }
 
     public string interactionText() { return "none"; }
 }

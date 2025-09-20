@@ -4,15 +4,12 @@ using UnityEngine.UIElements;
 public interface Interactable
 {
     public void Interact();
-    public string interactionText();
-    public void toggleE(bool activate);
+    public void toggle(bool activate);
 }
 
 public class Interactor : MonoBehaviour
 {
     public KeyCode interactKey = KeyCode.E;
-    public TextElement interactionPrompt;
-
     private Interactable currentInteractable;
 
     void Update()
@@ -29,9 +26,7 @@ public class Interactor : MonoBehaviour
         if (interactable != null)
         {
             currentInteractable = interactable;
-            interactable.toggleE(true);
-            if (interactionPrompt != null)
-                interactionPrompt.text = interactable.interactionText();
+            interactable.toggle(true);
         }
     }
 
@@ -40,12 +35,10 @@ public class Interactor : MonoBehaviour
         if (other.GetComponent<Interactable>() == currentInteractable)
         {
             if (currentInteractable is Interactable) {
-                currentInteractable.toggleE(false);
+                currentInteractable.toggle(false);
             }
 
             currentInteractable = null;
-            if (interactionPrompt != null)
-                interactionPrompt.text = "test";
         }
     }
 }

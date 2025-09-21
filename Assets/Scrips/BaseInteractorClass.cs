@@ -1,12 +1,24 @@
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 
-public class ToggleTheKey : MonoBehaviour, Interactable
+public class LinesOfCSV
+{
+    public int dialogNumber { get; set; }
+    public string dialog { get; set; }
+}
+
+public class BaseInteractorClass : MonoBehaviour, Interactable
 {
     public TextMeshProUGUI txt;
     public TextMeshProUGUI txtDialog;
     public GameObject imageDialog;
+    public string pathName = string.Empty;
+    public List<LinesOfCSV> myDialog = new List<LinesOfCSV>();
+
     //public TextMeshProUGUI txt1;
 
     void Awake()
@@ -33,7 +45,41 @@ public class ToggleTheKey : MonoBehaviour, Interactable
             imageDialog.gameObject.SetActive(false);
     }
 
-    public void Interact()
+    public virtual void Start()
+    {
+        using (StreamReader myRead = new StreamReader(pathName))
+        {
+            string line;
+            bool first = true;
+
+            while ((line = myRead.ReadLine()) != null)
+            {
+                if (first)
+                {
+                    first = false;
+                    continue;
+                }
+
+                // Regex to split CSV but ignore commas inside quotes
+                var matches = Regex.Matches(line, @"(?:^|,)(?:(?:""(?<val>[^""]*)"")|(?<val>[^,]*))");
+                var part = new List<string>();
+                foreach (Match match in matches)
+                {
+                    part.Add(match.Groups["val"].Value);
+                }
+
+                LinesOfCSV oneLine = new LinesOfCSV
+                {
+                    dialogNumber = int.Parse(part[0]),
+                    dialog = part[1]
+                };
+
+                myDialog.Add(oneLine);
+            }
+        }
+    }
+
+    public virtual void Interact()
     {
         //Make sure that the child is calling this method
         imageDialog.gameObject.SetActive(true);
@@ -61,4 +107,3 @@ public class ToggleTheKey : MonoBehaviour, Interactable
         return Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(go => go.name == objectName && go.scene.isLoaded);
     }
 }
-

@@ -427,21 +427,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1252300943239936, guid: 23b2b74f423bd214196acc74f2716a70, type: 3}
   m_PrefabInstance: {fileID: 1651244578}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &167100069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 167100068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d537811fd1fc7d146af77cbf7e086eb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  txt: {fileID: 0}
-  txtDialog: {fileID: 0}
-  imageDialog: {fileID: 0}
 --- !u!4 &167100071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4421900341329478, guid: 23b2b74f423bd214196acc74f2716a70, type: 3}
@@ -502,12 +487,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 167100068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d537811fd1fc7d146af77cbf7e086eb2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e3ccaf810805374db2ba965c4733136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   txt: {fileID: 0}
   txtDialog: {fileID: 0}
   imageDialog: {fileID: 0}
+  pathName: Assets/Dialogs/garddialog.csv
 --- !u!1 &197005497
 GameObject:
   m_ObjectHideFlags: 0
@@ -3184,9 +3170,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1339252507}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1252300943239936, guid: 23b2b74f423bd214196acc74f2716a70, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 167100069}
     - targetCorrespondingSourceObject: {fileID: 1252300943239936, guid: 23b2b74f423bd214196acc74f2716a70, type: 3}
       insertIndex: -1
       addedObject: {fileID: 167100072}

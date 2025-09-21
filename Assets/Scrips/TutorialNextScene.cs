@@ -30,7 +30,6 @@ public class TutorialNextScene : MonoBehaviour, Interactable
     {
         if (Input.GetKeyDown(KeyCode.W) && isPress)
         {
-            SetOreviousTimeAudio();
             SceneManager.LoadScene(stages[numStage - 1]);
         }
     }
@@ -63,7 +62,6 @@ public class TutorialNextScene : MonoBehaviour, Interactable
 
         try {
             if (!isPress) {
-                SetOreviousTimeAudio();
                 SceneManager.LoadScene(stages[numStage - 1]);
             }
         }
@@ -71,10 +69,6 @@ public class TutorialNextScene : MonoBehaviour, Interactable
         {
             Debug.LogException(e);
         }
-    }
-    private void SetOreviousTimeAudio() {
-        MuteTheAudio myScipt = GameObject.Find("MusicEngine").GetComponent<MuteTheAudio>();
-        myScipt.SetPreviousTime();
     }
 
 

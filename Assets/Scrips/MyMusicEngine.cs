@@ -7,9 +7,7 @@ public class MuteTheAudio : MonoBehaviour
 {
     public AudioClip menu;
     private AudioSource audioSource;
-    private static float previousTime = 0;
     public bool isMenu = false;
-    private static bool isPlaying;
     public static MuteTheAudio I { get; private set; }
 
     //buttons
@@ -20,33 +18,31 @@ public class MuteTheAudio : MonoBehaviour
     {
         if (I != null) { Destroy(gameObject); return; }
         I = this;
+
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Start()
     {
+        //Set listener in the Ui button 
         myMusic = GameObject.Find("Music_Button").GetComponent<Button>();
         myMusic.onClick.AddListener(ToggleMuteTheMusic);
 
         myAudio = GameObject.Find("Sound_Button").GetComponent<Button>();
         myAudio.onClick.AddListener(ToggleMuteTheAudio);
 
-
+        //Setup the audio Source and play
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = menu;
         audioSource.playOnAwake = true;
         audioSource.loop = true;
-
-        if (previousTime != 0) {
-            //audioSource.time = previousTime;
-        }
-
         audioSource.Play();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        //Set listener in the Ui button when the scene is cahnge
         myMusic = GameObject.Find("Music_Button").GetComponent<Button>();
         myMusic.onClick.AddListener(ToggleMuteTheMusic);
 
@@ -61,8 +57,5 @@ public class MuteTheAudio : MonoBehaviour
     public void ToggleMuteTheMusic()
     {
         audioSource.mute = !audioSource.mute;
-    }
-    public void SetPreviousTime() {
-        previousTime = audioSource.time;
     }
 }

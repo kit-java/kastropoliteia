@@ -19,35 +19,17 @@ public class AchievementDialogManager : MonoBehaviour
 
     private List<UnlockedDialog> unlockedDialogs = new List<UnlockedDialog>();
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // persists across scenes
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
-    /// <summary>
-    /// Unlocks a new dialog and stores it as an achievement.
-    /// </summary>
     public void UnlockDialog(string sceneName, string dialogLine)
     {
         // Prevent duplicates
         if (!unlockedDialogs.Exists(d => d.scene == sceneName && d.text == dialogLine))
         {
             unlockedDialogs.Add(new UnlockedDialog { scene = sceneName, text = dialogLine });
-            Debug.Log($"Unlocked new dialog-achievement: [{sceneName}] {dialogLine}");
+            RefreshUI();
         }
     }
 
-    /// <summary>
-    /// Toggle the achievements panel (show/hide).
-    /// </summary>
     public void ToggleAchievements()
     {
         if (achievementsPanel == null) return;
@@ -58,15 +40,12 @@ public class AchievementDialogManager : MonoBehaviour
             RefreshUI();
     }
 
-    /// <summary>
-    /// Refresh the achievements panel with all unlocked dialogs.
-    /// </summary>
     private void RefreshUI()
     {
         achievementsText.text = "";
         foreach (var d in unlockedDialogs)
         {
-            achievementsText.text += $"[{d.scene}] ✔ {d.text}\n";
+            achievementsText.text += $"[{d.scene}] : {d.text}\n\n";
         }
     }
 }

@@ -494,6 +494,7 @@ MonoBehaviour:
   txtDialog: {fileID: 0}
   imageDialog: {fileID: 0}
   pathName: Assets/Dialogs/garddialog.csv
+  dialogtimer: 5
 --- !u!1 &197005497
 GameObject:
   m_ObjectHideFlags: 0

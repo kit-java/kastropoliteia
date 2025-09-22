@@ -1228,6 +1228,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1652796270759994, guid: ed3c152aba85638429bf8b50e4c24c64, type: 3}
       insertIndex: -1
       addedObject: {fileID: 684986318}
+    - targetCorrespondingSourceObject: {fileID: 1652796270759994, guid: ed3c152aba85638429bf8b50e4c24c64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 684986319}
   m_SourcePrefab: {fileID: 100100000, guid: ed3c152aba85638429bf8b50e4c24c64, type: 3}
 --- !u!4 &684986315 stripped
 Transform:
@@ -1300,6 +1303,23 @@ MonoBehaviour:
   txt: {fileID: 0}
   txtDialog: {fileID: 0}
   imageDialog: {fileID: 0}
+--- !u!114 &684986319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684986316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3ccaf810805374db2ba965c4733136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txt: {fileID: 0}
+  txtDialog: {fileID: 0}
+  imageDialog: {fileID: 0}
+  pathName: Assets/Dialogs/bastion_scene_dialog.csv
+  dialogtimer: 5
 --- !u!1001 &730074122
 PrefabInstance:
   m_ObjectHideFlags: 0

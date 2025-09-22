@@ -42,18 +42,16 @@ public class Item : MonoBehaviour
     }
 
     private void TryPickup()
-    {
+    {;
         if (inventoryManager == null) return;
 
         int leftOver = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
         if (leftOver <= 0)
         {
-            Debug.Log("Destroy");
             Destroy(gameObject);
         }
         else
         {
-            Debug.Log("not Destroy");
             quantity = leftOver;
         }
     }

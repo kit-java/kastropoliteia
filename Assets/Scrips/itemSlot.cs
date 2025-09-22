@@ -24,7 +24,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public bool IsEmpty => Quantity <= 0;
     public bool IsFull => Quantity >= maxNumberOfItems;
 
-    private InventoryManager manager;
+    public InventoryManager manager;
 
     private void Awake()
     {
@@ -51,8 +51,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             ItemName = itemName;
             ItemDescription = description;
             ItemIcon = icon;
-
-            Debug.Log(icon);
         }
         else if (ItemName != itemName)
         {

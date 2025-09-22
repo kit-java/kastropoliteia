@@ -35,8 +35,6 @@ public class InventoryManager : MonoBehaviour
     {
         if (quantity <= 0) return 0;
 
-        Debug.Log("pass InventoryManager");
-
         // 1) Απόπειρα stack σε ίδια είδη
         for (int i = 0; i < itemSlots.Length; i++)
         {

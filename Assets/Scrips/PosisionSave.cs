@@ -21,8 +21,4 @@ public class PosisionSave : MonoBehaviour
             Debug.LogException(ex);
         }
     }
-    private void Awake()
-    {
-        //DontDestroyOnLoad(gameObject);
-    }
 }

@@ -202,9 +202,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2005610402}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MuteTheAudio, Assembly-CSharp
-        m_MethodName: ToggleMuteTheMusic
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -213,7 +213,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
 --- !u!114 &55381875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1573,9 +1573,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2005610402}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MuteTheAudio, Assembly-CSharp
-        m_MethodName: ToggleMuteTheAudio
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1584,7 +1584,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
 --- !u!222 &1514562054
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1975,6 +1975,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu: {fileID: 8300000, guid: 7dd8cf61787dccd408913cfa16392648, type: 3}
   isMenu: 0
+  musicButtonCollor: {fileID: 0}
+  soundButtonCollor: {fileID: 0}
+  myMusic: {fileID: 0}
+  myAudio: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -8,11 +8,15 @@ public class MuteTheAudio : MonoBehaviour
     public AudioClip menu;
     private AudioSource audioSource;
     public bool isMenu = false;
+
+    public Image musicButtonCollor;
+    public Image soundButtonCollor;
+
     public static MuteTheAudio I { get; private set; }
 
     //buttons
-    private Button myMusic;
-    private Button myAudio;
+    public Button myMusic;
+    public Button myAudio;
 
     void Awake()
     {
@@ -25,13 +29,6 @@ public class MuteTheAudio : MonoBehaviour
 
     void Start()
     {
-        //Set listener in the Ui button 
-        myMusic = GameObject.Find("Music_Button").GetComponent<Button>();
-        myMusic.onClick.AddListener(ToggleMuteTheMusic);
-
-        myAudio = GameObject.Find("Sound_Button").GetComponent<Button>();
-        myAudio.onClick.AddListener(ToggleMuteTheAudio);
-
         //Setup the audio Source and play
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = menu;
@@ -42,20 +39,40 @@ public class MuteTheAudio : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        //Set listener in the Ui button when the scene is cahnge
-        myMusic = GameObject.Find("Music_Button").GetComponent<Button>();
-        myMusic.onClick.AddListener(ToggleMuteTheMusic);
+        if (scene.name == "0.5Tutorial" || scene.name == "0.1MainMenu")
+        {
+            //Set listener in the Ui button when the scene is cahnge
+            myMusic = GameObject.Find("Music_Button").GetComponent<Button>();
+            myMusic.onClick.AddListener(ToggleMuteTheMusic);
 
-        myAudio = GameObject.Find("Sound_Button").GetComponent<Button>();
-        myAudio.onClick.AddListener(ToggleMuteTheAudio);
+            myAudio = GameObject.Find("Sound_Button").GetComponent<Button>();
+            myAudio.onClick.AddListener(ToggleMuteTheAudio);
+        }
     }
 
     public void ToggleMuteTheAudio(){
         AudioListener.pause = !AudioListener.pause;
+
+       if (AudioListener.pause)
+       {
+            myAudio.GetComponent<Image>().color = Color.red;
+       }
+       else
+       {
+            myAudio.GetComponent<Image>().color = Color.white;
+       }
     }
 
     public void ToggleMuteTheMusic()
     {
         audioSource.mute = !audioSource.mute;
+
+        if (audioSource.mute)
+        {
+            myMusic.GetComponent<Image>().color = Color.red;
+        }
+        else {
+            myMusic.GetComponent<Image>().color = Color.white;
+        }
     }
 }

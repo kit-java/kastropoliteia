@@ -12,8 +12,6 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
     [SerializeField] private Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
 
-    public AudioSource footSteps;
-
     const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
     private bool m_Grounded;            // Whether or not the player is grounded.
     const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
@@ -41,8 +39,6 @@ public class CharacterController2D : MonoBehaviour
 
         if (OnCrouchEvent == null)
             OnCrouchEvent = new BoolEvent();
-
-        footSteps = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -66,15 +62,8 @@ public class CharacterController2D : MonoBehaviour
     }
 
 
-    public void Move(float move, bool crouch, bool jump, bool isMoving)
+    public void Move(float move, bool crouch, bool jump)
     {
-
-        if (isMoving && m_Grounded)
-        {
-            if (!footSteps.isPlaying)
-                footSteps.Play();
-        }
-
         // If crouching, check to see if the character can stand up
         if (!crouch)
         {

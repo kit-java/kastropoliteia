@@ -16,7 +16,6 @@ public class BaseInteractorClass : MonoBehaviour, Interactable
     public TextMeshProUGUI txt;
     public TextMeshProUGUI txtDialog;
     public GameObject imageDialog;
-    protected bool playerToching = false;
     public string pathName = string.Empty;
     public List<LinesOfCSV> myDialog = new List<LinesOfCSV>();
 
@@ -92,12 +91,10 @@ public class BaseInteractorClass : MonoBehaviour, Interactable
     {
         if (activate)
         {
-            playerToching = true;
             txt.gameObject.SetActive(true);
         }
         else
         {
-            playerToching = false;
             imageDialog.gameObject.SetActive(false);
             txtDialog.gameObject.SetActive(false);
             txt.gameObject.SetActive(false);
@@ -105,7 +102,7 @@ public class BaseInteractorClass : MonoBehaviour, Interactable
     }
 
     //Find all the object children of a object and return the one that the name is the same as the objectName
-    public static GameObject FindInactiveByName(string objectName)
+    private static GameObject FindInactiveByName(string objectName)
     {
         return Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(go => go.name == objectName && go.scene.isLoaded);
     }

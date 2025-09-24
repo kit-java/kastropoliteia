@@ -245,7 +245,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Table (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3023209898991381071, guid: b78702531cc991540bea14f3518027c2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1642,7 +1643,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Wine Bottle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6611869864331203391, guid: 83d9652edf8102948abc7e6551b4db36, type: 3}
+    - {fileID: 5038015601946584915, guid: 83d9652edf8102948abc7e6551b4db36, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1795,7 +1798,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Table (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3023209898991381071, guid: b78702531cc991540bea14f3518027c2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

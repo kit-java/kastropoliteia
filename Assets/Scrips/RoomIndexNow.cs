@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RoomIndex : MonoBehaviour
 {
-    public int roomIndex; // 0-based index matching the MapManager's array order
+    public int roomIndex; 
 
     void Start()
     {

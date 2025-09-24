@@ -4,8 +4,9 @@ using UnityEngine.Rendering;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D myCharacterController;
+    public AudioSource footSteps;
+    private bool isMoving = false;
     //public Animator myAnimator;
-
 
     public float speed = 30f;
 
@@ -17,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     {
         myCharacterController = GetComponent<CharacterController2D>();
         //myAnimator = GetComponent<Animator>();
+
+        footSteps = GetComponent<AudioSource>();
+        //footSteps.loop = true;
     }
 
     // Update is called once per frame
@@ -24,15 +28,21 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
 
-        //myAnimator.SetFloat("speed", Mathf.Abs(horizontalMove));
-
-        //if()
-
         if (Input.GetButtonDown("Jump"))
         {
             jumping = true;
         }
 
+        //if moving play the footSteps
+
+        if (horizontalMove == 0)
+        {
+            isMoving = false;
+        }
+        else
+        {
+            isMoving = true;
+        }
         //Debug.Log(horizontalMove);
 
 
@@ -41,8 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Debug.Log(jumping);
-        myCharacterController.Move(horizontalMove * Time.fixedDeltaTime, false, jumping);
+        myCharacterController.Move(horizontalMove * Time.fixedDeltaTime, false, jumping, isMoving);
         jumping = false;
     }
 

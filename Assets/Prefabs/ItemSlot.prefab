@@ -305,7 +305,11 @@ MonoBehaviour:
   iconImage: {fileID: 0}
   quantityText: {fileID: 1087090637211789855}
   selectedHighlight: {fileID: 0}
+  ImageDescription: {fileID: 0}
+  ItemDescriptionNameText: {fileID: 0}
+  ItemDescriptionText: {fileID: 0}
   maxNumberOfItems: 99
+  manager: {fileID: 0}
 --- !u!1 &9214964262540423040
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.49803925, g: 0.49803925, b: 0.49803925, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

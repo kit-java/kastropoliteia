@@ -87,7 +87,7 @@ public class BaseInteractorClass : MonoBehaviour, Interactable
     }
 
     //Used for toggleing the text when it id in the colider box
-    public void toggle(bool activate)
+    public virtual void OnTrigger(bool activate)
     {
         if (activate)
         {
@@ -102,7 +102,7 @@ public class BaseInteractorClass : MonoBehaviour, Interactable
     }
 
     //Find all the object children of a object and return the one that the name is the same as the objectName
-    private static GameObject FindInactiveByName(string objectName)
+    public static GameObject FindInactiveByName(string objectName)
     {
         return Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(go => go.name == objectName && go.scene.isLoaded);
     }

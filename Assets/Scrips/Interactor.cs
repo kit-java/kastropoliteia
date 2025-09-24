@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 public interface Interactable
 {
     public void Interact();
-    public void toggle(bool activate);
+    public void OnTrigger(bool activate);
 }
 
 public class Interactor : MonoBehaviour
@@ -26,7 +26,7 @@ public class Interactor : MonoBehaviour
         if (interactable != null)
         {
             currentInteractable = interactable;
-            interactable.toggle(true);
+            interactable.OnTrigger(true);
         }
     }
 
@@ -35,7 +35,7 @@ public class Interactor : MonoBehaviour
         if (other.GetComponent<Interactable>() == currentInteractable)
         {
             if (currentInteractable is Interactable) {
-                currentInteractable.toggle(false);
+                currentInteractable.OnTrigger(false);
             }
 
             currentInteractable = null;

@@ -1522,6 +1522,7 @@ MonoBehaviour:
   imageDialog: {fileID: 0}
   pathName: Assets/Dialogs/garden_scene_dialog.csv
   dialogtimer: 5
+  characterName: Gardener
 --- !u!61 &688393657
 BoxCollider2D:
   m_ObjectHideFlags: 0

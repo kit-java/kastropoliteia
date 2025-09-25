@@ -212,6 +212,7 @@ MonoBehaviour:
   imageDialog: {fileID: 0}
   pathName: Assets/Dialogs/woodyard_scene_dialog.csv
   dialogtimer: 5
+  characterName: Woodcutter
 --- !u!61 &65359546
 BoxCollider2D:
   m_ObjectHideFlags: 0

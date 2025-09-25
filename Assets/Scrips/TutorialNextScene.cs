@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -7,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class TutorialNextScene : MonoBehaviour, Interactable
 {
+    public KeyCode keyCode = KeyCode.W;
+    public TextMeshProUGUI mytextMeshPro;
 
     private string[] stages = {"1Entrance",
                                 "2Bastion",
@@ -25,10 +28,16 @@ public class TutorialNextScene : MonoBehaviour, Interactable
     private void Start()
     {
         StartCoroutine(EnableTriggerAfterDelay());
+
+        if (isPress) {
+            mytextMeshPro = transform.Find("Canvas/PressButton").GetComponent<TextMeshProUGUI>();
+
+            mytextMeshPro.gameObject.SetActive(false);
+        }
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && isPress)
+        if (Input.GetKeyDown(keyCode) && isPress)
         {
             SceneManager.LoadScene(stages[numStage - 1]);
         }
@@ -73,7 +82,17 @@ public class TutorialNextScene : MonoBehaviour, Interactable
 
 
     public void Interact() { }
+    public void OnTrigger(bool a)
+    {
+        if (isPress && a)
+        {
+            mytextMeshPro.gameObject.SetActive(true);
+        }
 
-    public void OnTrigger(bool a) { }
+        if(isPress && !a){
+            mytextMeshPro.gameObject.SetActive(false);
+        }
+    }
     public string interactionText() { return "none"; }
+
 }

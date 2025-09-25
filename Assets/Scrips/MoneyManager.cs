@@ -1,30 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
 public class MoneyManager : MonoBehaviour
 {
-    private float moneyAmound = 2000;
+    private float moneyAmound = 1000;
     private List<TextMeshProUGUI> allMoneyDisplay;
     private bool playFlash = true;
 
     public List<TextMeshProUGUI> noMoneyDisplay;
     public float flashtimer = 0.3f;
     public int flashCount = 3;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
         allMoneyDisplay = new List<TextMeshProUGUI>();
+        //SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnEnable()
+    {
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         allMoneyDisplay.Clear();
         noMoneyDisplay.Clear();
+
         TextMeshProUGUI[] allObjects = GameObject.FindObjectsOfType<TextMeshProUGUI>(true);
 
         foreach (TextMeshProUGUI obj in allObjects)
@@ -74,11 +87,15 @@ public class MoneyManager : MonoBehaviour
     }
 
     void UpdateUI(){
-        foreach (TextMeshProUGUI obj in allMoneyDisplay) {
-            obj.text = moneyAmound.ToString();
-            
-            if (playFlash)
-                StartCoroutine(FlashText(obj, true));
+        if (allMoneyDisplay != null)
+        {
+            foreach (TextMeshProUGUI obj in allMoneyDisplay)
+            {
+                obj.text = moneyAmound.ToString();
+
+                if (playFlash)
+                    StartCoroutine(FlashText(obj, true));
+            }
         }
 
         playFlash = false;
@@ -88,6 +105,8 @@ public class MoneyManager : MonoBehaviour
     {
         for (int i = 0; i < flashCount; i++)
         {
+            if (txt == null) yield break;
+
             if (txt.IsActive())
             {
                 txt.enabled = false; // turn off
@@ -99,6 +118,8 @@ public class MoneyManager : MonoBehaviour
                 yield return new WaitForSeconds(flashtimer);
             }
         }
+        if (txt == null) yield break;
+
         if (finalFlash)
         {
             txt.enabled = true;

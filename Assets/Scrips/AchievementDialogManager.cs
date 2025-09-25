@@ -18,7 +18,7 @@ public class AchievementDialogManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI achievementsText; // Text inside ScrollView
 
     private List<UnlockedDialog> unlockedDialogs = new List<UnlockedDialog>();
-
+    private MoneyManager moneyManager;
 
     public void UnlockDialog(string sceneName, string dialogLine)
     {
@@ -26,6 +26,11 @@ public class AchievementDialogManager : MonoBehaviour
         if (!unlockedDialogs.Exists(d => d.scene == sceneName && d.text == dialogLine))
         {
             unlockedDialogs.Add(new UnlockedDialog { scene = sceneName, text = dialogLine });
+
+            moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
+            if (moneyManager != null )
+                moneyManager.addMoney(100);
+
             RefreshUI();
         }
     }

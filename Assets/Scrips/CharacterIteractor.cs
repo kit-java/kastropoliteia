@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,13 +7,13 @@ public class CharacterIteractor : BaseInteractorClass
 {
 
     public static AchievementDialogManager achievementDialogManager;
-    public static string activeScene = null;
     public float dialogtimer = 5f;
     private bool isPressOnes = false;
     private bool playerToching = false;
     private IEnumerator myDialogloop;
 
-
+    public string characterName = "defualt";
+    private string achievementText = null;
     public override void Interact()
     {
         base.Interact();
@@ -21,6 +22,20 @@ public class CharacterIteractor : BaseInteractorClass
             myDialogloop = ShowDialog();
             isPressOnes = true;
             StartCoroutine(myDialogloop);
+        }
+
+        achievementText = "";
+        foreach (LinesOfCSV line in myDialog)
+        {
+            achievementText = achievementText + " " + line.dialog;
+        }
+
+        if (achievementText != null)
+        {
+            if (achievementDialogManager == null)
+                achievementDialogManager = FindInactiveByName("Achievement").GetComponent<AchievementDialogManager>();
+
+            achievementDialogManager.UnlockDialog(characterName, achievementText);
         }
     }
 
@@ -37,6 +52,7 @@ public class CharacterIteractor : BaseInteractorClass
             {
                 StopCoroutine(myDialogloop);
                 myDialogloop = null;
+                achievementText = null;
             }
         }
     }
@@ -49,15 +65,9 @@ public class CharacterIteractor : BaseInteractorClass
 
             txtDialog.text = line.dialog;
 
-            activeScene = SceneManager.GetActiveScene().name;
-
-            if (achievementDialogManager == null)
-                achievementDialogManager = FindInactiveByName("Achievement").GetComponent<AchievementDialogManager>();
-
-            achievementDialogManager.UnlockDialog(activeScene, line.dialog);
+            achievementText = achievementText + line.dialog;
 
             yield return new WaitForSeconds(dialogtimer);
         }
     }
-
 }

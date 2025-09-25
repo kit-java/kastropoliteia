@@ -2665,6 +2665,7 @@ MonoBehaviour:
   imageDialog: {fileID: 0}
   pathName: Assets/Dialogs/yard_scene_dialog.csv
   dialogtimer: 5
+  characterName: Yard Character
 --- !u!61 &1245401453
 BoxCollider2D:
   m_ObjectHideFlags: 0

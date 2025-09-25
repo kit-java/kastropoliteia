@@ -18,8 +18,8 @@ public class BuyItme : MonoBehaviour
     public Image myImage;
     public TextMeshProUGUI txtPrice;
     public TextMeshProUGUI txtName;
-    public TextMeshProUGUI myMoney;
     public int quantity = 1;
+    public MoneyManager moneyManager;
     public Button buyB;
 
     private void Awake()
@@ -30,7 +30,7 @@ public class BuyItme : MonoBehaviour
             GameObject go = GameObject.Find("InventoryCanvas");
             if (go != null) inventoryManager = go.GetComponent<InventoryManager>();
         }
-        myMoney = FindInactiveByName("MoneyNumber").GetComponent<TextMeshProUGUI>();
+        moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
 
         myImage = transform.Find("ItemBackGroud/ItemImage").GetComponent<Image>();
         myImage.sprite = sprite;
@@ -53,12 +53,10 @@ public class BuyItme : MonoBehaviour
             Debug.LogError("Item does not have itemDescription, itemName, sprite");
         }
 
-        float myMoneyfloat = float.Parse(myMoney.text);
-
-        if (myMoneyfloat > itemPrice)
+        if (moneyManager.IsEnough(itemPrice))
         {
             inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
-            myMoney.text = (myMoneyfloat - itemPrice).ToString();
+            moneyManager.removeMoney(itemPrice);
         }
         else {
             Debug.Log("You dont have enough money!!!");

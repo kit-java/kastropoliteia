@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class InventoryManager : MonoBehaviour
     public ItemSO[] itemSos;
 
     private bool menuActivated;
+    public TextMeshProUGUI money;
 
     private void Update()
     {

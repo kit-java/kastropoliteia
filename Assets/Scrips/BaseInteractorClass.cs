@@ -47,35 +47,44 @@ public class BaseInteractorClass : MonoBehaviour, Interactable
 
     public virtual void Start()
     {
-        using (StreamReader myRead = new StreamReader(pathName))
+        string pathName1 = Path.Combine(Application.dataPath, pathName);
+
+        if (File.Exists(pathName1))
         {
-            string line;
-            bool first = true;
-
-            while ((line = myRead.ReadLine()) != null)
+            using (StreamReader myRead = new StreamReader(pathName1))
             {
-                if (first)
+                string line;
+                bool first = true;
+
+                while ((line = myRead.ReadLine()) != null)
                 {
-                    first = false;
-                    continue;
+                    if (first)
+                    {
+                        first = false;
+                        continue;
+                    }
+
+                    // Regex to split CSV but ignore commas inside quotes
+                    var matches = Regex.Matches(line, @"(?:^|,)(?:(?:""(?<val>[^""]*)"")|(?<val>[^,]*))");
+                    var part = new List<string>();
+                    foreach (Match match in matches)
+                    {
+                        part.Add(match.Groups["val"].Value);
+                    }
+
+                    LinesOfCSV oneLine = new LinesOfCSV
+                    {
+                        dialogNumber = int.Parse(part[0]),
+                        dialog = part[1]
+                    };
+
+                    myDialog.Add(oneLine);
                 }
-
-                // Regex to split CSV but ignore commas inside quotes
-                var matches = Regex.Matches(line, @"(?:^|,)(?:(?:""(?<val>[^""]*)"")|(?<val>[^,]*))");
-                var part = new List<string>();
-                foreach (Match match in matches)
-                {
-                    part.Add(match.Groups["val"].Value);
-                }
-
-                LinesOfCSV oneLine = new LinesOfCSV
-                {
-                    dialogNumber = int.Parse(part[0]),
-                    dialog = part[1]
-                };
-
-                myDialog.Add(oneLine);
             }
+        }
+        else
+        {
+            Debug.LogError("CSV file not found at: " + pathName1);
         }
     }
 

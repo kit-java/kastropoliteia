@@ -3264,7 +3264,7 @@ MonoBehaviour:
   txt: {fileID: 0}
   txtDialog: {fileID: 0}
   imageDialog: {fileID: 0}
-  pathName: Assets/Dialogs/feast_hall_scene_dialog.csv
+  pathName: Dialogs/feast_hall_scene_dialog.csv
   dialogtimer: 5
   characterName: King
 --- !u!61 &1523550343

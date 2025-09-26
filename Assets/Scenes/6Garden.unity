@@ -1520,7 +1520,7 @@ MonoBehaviour:
   txt: {fileID: 0}
   txtDialog: {fileID: 0}
   imageDialog: {fileID: 0}
-  pathName: Assets/Dialogs/garden_scene_dialog.csv
+  pathName: Dialogs/garden_scene_dialog.csv
   dialogtimer: 5
   characterName: Gardener
 --- !u!61 &688393657
@@ -2385,6 +2385,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aec7307c8439494483031a7bd7def26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyCode: 119
+  mytextMeshPro: {fileID: 0}
   numStage: 5
   triggerCooldown: 1
   isPress: 0
@@ -4119,6 +4121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aec7307c8439494483031a7bd7def26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyCode: 119
+  mytextMeshPro: {fileID: 0}
   numStage: 7
   triggerCooldown: 1
   isPress: 0

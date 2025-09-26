@@ -210,7 +210,7 @@ MonoBehaviour:
   txt: {fileID: 0}
   txtDialog: {fileID: 0}
   imageDialog: {fileID: 0}
-  pathName: Assets/Dialogs/woodyard_scene_dialog.csv
+  pathName: Dialogs/woodyard_scene_dialog.csv
   dialogtimer: 5
   characterName: Woodcutter
 --- !u!61 &65359546
@@ -351,6 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aec7307c8439494483031a7bd7def26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyCode: 119
+  mytextMeshPro: {fileID: 0}
   numStage: 3
   triggerCooldown: 1
   isPress: 0
@@ -2506,6 +2508,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aec7307c8439494483031a7bd7def26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyCode: 119
+  mytextMeshPro: {fileID: 0}
   numStage: 5
   triggerCooldown: 1
   isPress: 0

@@ -47,7 +47,7 @@ public class BaseInteractorClass : MonoBehaviour, Interactable
 
     public virtual void Start()
     {
-        string pathName1 = Path.Combine(Application.dataPath, pathName);
+        string pathName1 = Path.Combine(Application.streamingAssetsPath, pathName);
 
         if (File.Exists(pathName1))
         {
